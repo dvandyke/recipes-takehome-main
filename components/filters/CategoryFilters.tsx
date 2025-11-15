@@ -39,7 +39,7 @@ export function CategoryFilters({ selectedCategory, onCategoryChange }: Category
       />
       {categories.map((category) => (
         <FilterChip
-          key={category.idCategory}
+          key={category.strCategory}
           label={category.strCategory}
           active={selectedCategory === category.strCategory}
           onClick={() =>

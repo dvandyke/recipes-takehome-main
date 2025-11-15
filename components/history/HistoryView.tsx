@@ -106,13 +106,20 @@ export function HistoryView({ history, onRecipeClick, onClearHistory }: HistoryV
             >
               <div className="flex gap-4 p-4">
                 <div className="relative w-24 h-24 rounded overflow-hidden shrink-0 bg-muted">
-                  <Image
-                    src={recipe.strMealThumb}
-                    alt={recipe.strMeal}
-                    fill
-                    className="object-cover"
-                    sizes="96px"
-                  />
+                  {recipe.strMealThumb ? (
+                    <Image
+                      src={recipe.strMealThumb}
+                      alt={recipe.strMeal}
+                      fill
+                      className="object-cover"
+                      sizes="96px"
+                      unoptimized
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-xs text-muted-foreground">
+                      No image
+                    </div>
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-lg line-clamp-1 mb-1">

@@ -60,7 +60,6 @@ export interface ParsedRecipe extends Recipe {
 }
 
 export interface Category {
-  idCategory: string
   strCategory: string
 }
 

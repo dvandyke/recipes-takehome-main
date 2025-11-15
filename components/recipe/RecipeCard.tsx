@@ -23,14 +23,21 @@ export const RecipeCard = memo(function RecipeCard({ recipe, onBookmark, isBookm
       onClick={onClick}
     >
       <div className="relative aspect-video w-full bg-muted">
-        <Image
-          src={recipe.strMealThumb}
-          alt={recipe.strMeal}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          loading="lazy"
-        />
+        {recipe.strMealThumb ? (
+          <Image
+            src={recipe.strMealThumb}
+            alt={recipe.strMeal}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
+            unoptimized
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+            No image
+          </div>
+        )}
       </div>
       <CardContent className="p-4">
         <div className="flex items-start justify-between gap-2 mb-2">

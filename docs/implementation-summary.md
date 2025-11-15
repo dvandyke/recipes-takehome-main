@@ -2,7 +2,7 @@
 
 **Project**: Recipe Discovery Web Application  
 **Date**: November 13, 2025  
-**Methodology**: BMM (Business Methodology Management)  
+**Methodology**: BMad (Breakthrough Method for Agile Ai Driven Development)  
 **Development Time**: ~2 hours scoped implementation
 
 ---
@@ -12,7 +12,6 @@
 ### ✅ Epic 1: Foundation & Infrastructure (100%)
 - **Story 1.1**: Project foundation and tooling
   - Next.js 14, TypeScript, TailwindCSS configured
-  - Yarn 4 PnP, Volta for Node management
 - **Story 1.2**: Design system and theme primitives
   - shadcn/ui components installed (button, card, dialog, badge, input)
   - Dark mode support with next-themes
@@ -154,7 +153,6 @@
 ## 🛠️ Technical Highlights
 
 ### Architecture Decisions
-1. **Yarn PnP**: Faster installs, smaller disk footprint
 2. **App Router**: Next.js 14 modern routing
 3. **React Query**: Declarative data fetching with caching
 4. **shadcn/ui**: Copy-paste components, full control
@@ -216,4 +214,4 @@ This implementation successfully delivers all PRD requirements within the 2-hour
 - **Production Quality**: TypeScript, accessibility, performance optimizations
 - **Extensibility**: Easy to add features with established patterns
 
-The BMM methodology enabled systematic progress through discovery → planning → architecture → implementation phases, ensuring nothing was missed while maintaining velocity.
+The BMad methodology enabled systematic progress through discovery → planning → architecture → implementation phases, ensuring nothing was missed while maintaining velocity.

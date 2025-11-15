@@ -55,19 +55,15 @@ https://www.themealdb.com/api/json/v1/1
 
 ### Prerequisites
 - Node.js 18+ (using Volta with Node 25.1.0)
-- Yarn 4.6.0 (with Plug'n'Play)
 
 ### Installation
 
 ```bash
 # Install dependencies
-yarn install
-
-# Set up VSCode TypeScript SDK for Yarn PnP
-yarn dlx @yarnpkg/sdks vscode
+npm install install
 
 # Start development server
-yarn dev
+npm run dev
 ```
 
 Visit [http://localhost:3000](http://localhost:3000)
@@ -75,8 +71,8 @@ Visit [http://localhost:3000](http://localhost:3000)
 ### Build for Production
 
 ```bash
-yarn build
-yarn start
+npm run build
+npm run start
 ```
 
 ## 🏗️ Architecture
@@ -160,14 +156,13 @@ Base URL: `https://www.themealdb.com/api/json/v1/1`
 ## 🛠️ Development Tools Used
 
 ### AI Assistance
-This project was built using **GitHub Copilot with Claude Sonnet 4** following the **BMM (Business Methodology Management)** workflow:
+This project was built with assistance from **GitHub Copilot with Claude Sonnet 4** following the **BMad (Breakthrough Method for Agile Ai Driven Development)** workflow:
 1. **Discovery Phase**: Analyzed PRD requirements
 2. **Planning Phase**: Created epic breakdown (5 epics, 20 stories)
 3. **Architecture Phase**: Defined tech stack and patterns
 4. **Implementation Phase**: Built features iteratively
 
 ### Key Tools
-- **VS Code** with Yarn PnP SDK
 - **shadcn/ui CLI** for component scaffolding
 - **React Query DevTools** for state debugging
 - **Lighthouse** for performance/accessibility audits
@@ -178,7 +173,6 @@ This project was built using **GitHub Copilot with Claude Sonnet 4** following t
 - **localStorage over backend**: Faster prototype, works offline
 - **React Query**: Server state caching reduces API calls
 - **shadcn/ui**: Accessible components without heavy dependencies
-- **Yarn PnP**: Faster installs, deterministic resolutions
 
 ### Trade-offs
 - No server-side filtering (limited by free API)
@@ -197,4 +191,3 @@ This project was built using **GitHub Copilot with Claude Sonnet 4** following t
 
 MIT
 
-We will evaluate your submission, and then schedule a 45-minute interview to discuss your code/features and writeup. This interview will also include a live technical portion of coding more features live.

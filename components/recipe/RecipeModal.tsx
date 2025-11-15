@@ -93,14 +93,21 @@ export function RecipeModal({ recipe, isOpen, onClose, onToggleBookmark, isBookm
         </DialogHeader>
 
         <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-muted pb-4">
-          <Image
-            src={displayRecipe.strMealThumb}
-            alt={displayRecipe.strMeal}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 800px"
-            priority
-          />
+          {displayRecipe.strMealThumb ? (
+            <Image
+              src={displayRecipe.strMealThumb}
+              alt={displayRecipe.strMeal}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 800px"
+              priority
+              unoptimized
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+              No image available
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">
