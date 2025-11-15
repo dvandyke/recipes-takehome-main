@@ -156,7 +156,7 @@ Base URL: `https://www.themealdb.com/api/json/v1/1`
 ## 🛠️ Development Tools Used
 
 ### AI Assistance
-This project was built with assistance from **GitHub Copilot with Claude Sonnet 4** following the **BMad (Breakthrough Method for Agile Ai Driven Development)** workflow:
+This project was built with assistance from **GitHub Copilot with Claude Sonnet 4** following the **BMad (Breakthrough Method for Agile Ai Driven Development)[https://github.com/bmad-code-org/BMAD-METHOD]** workflow:
 1. **Discovery Phase**: Analyzed PRD requirements
 2. **Planning Phase**: Created epic breakdown (5 epics, 20 stories)
 3. **Architecture Phase**: Defined tech stack and patterns
