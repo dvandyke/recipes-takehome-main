@@ -1,5 +1,6 @@
 'use client'
 
+import { memo, useCallback } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getCategories } from '@/lib/api'
 import { FilterChip } from './FilterChip'
@@ -9,7 +10,16 @@ interface CategoryFiltersProps {
   onCategoryChange: (category: string | null) => void
 }
 
-export function CategoryFilters({ selectedCategory, onCategoryChange }: CategoryFiltersProps) {
+export const CategoryFilters = memo(function CategoryFilters({ selectedCategory, onCategoryChange }: CategoryFiltersProps) {
+  const handleAllClick = useCallback(() => {
+    onCategoryChange(null)
+  }, [onCategoryChange])
+
+  const handleCategoryClick = useCallback((category: string) => {
+    return () => {
+      onCategoryChange(selectedCategory === category ? null : category)
+    }
+  }, [selectedCategory, onCategoryChange])
   const { data: categories, isLoading } = useQuery({
     queryKey: ['categories'],
     queryFn: getCategories,
@@ -35,20 +45,16 @@ export function CategoryFilters({ selectedCategory, onCategoryChange }: Category
         key="all-categories"
         label="All"
         active={selectedCategory === null}
-        onClick={() => onCategoryChange(null)}
+        onClick={handleAllClick}
       />
       {categories.map((category) => (
         <FilterChip
           key={category.strCategory}
           label={category.strCategory}
           active={selectedCategory === category.strCategory}
-          onClick={() =>
-            onCategoryChange(
-              selectedCategory === category.strCategory ? null : category.strCategory
-            )
-          }
+          onClick={handleCategoryClick(category.strCategory)}
         />
       ))}
     </div>
   )
-}
+})

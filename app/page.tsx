@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { SearchBar } from '@/components/search/SearchBar'
 import { CategoryFilters } from '@/components/filters/CategoryFilters'
 import { AreaFilters } from '@/components/filters/AreaFilters'
@@ -41,14 +41,30 @@ export default function Home() {
   const activeQuery = selectedArea ? areaQuery : selectedCategory ? categoryQuery : searchQuery
   const { data: recipes, isLoading, error, refetch } = activeQuery
 
-  const handleRecipeClick = (recipe: Recipe) => {
+  const handleRecipeClick = useCallback((recipe: Recipe) => {
     setSelectedRecipe(recipe)
     addToHistory(recipe.idMeal, recipe.strMeal)
-  }
+  }, [addToHistory])
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setSelectedRecipe(null)
-  }
+  }, [])
+
+  const handleCategoryChange = useCallback((cat: string | null) => {
+    setSelectedCategory(cat)
+    setSelectedArea(null)
+  }, [])
+
+  const handleAreaChange = useCallback((area: string | null) => {
+    setSelectedArea(area)
+    setSelectedCategory(null)
+  }, [])
+
+  const handleToggleBookmarkModal = useCallback(() => {
+    if (selectedRecipe) {
+      toggleBookmark(selectedRecipe.idMeal)
+    }
+  }, [selectedRecipe, toggleBookmark])
 
   return (
     <div className="min-h-screen bg-background">
@@ -82,10 +98,7 @@ export default function Home() {
                   <h3 className="text-sm font-medium mb-2 text-muted-foreground">Filter by Category</h3>
                   <CategoryFilters
                     selectedCategory={selectedCategory}
-                    onCategoryChange={(cat) => {
-                      setSelectedCategory(cat)
-                      setSelectedArea(null) // Clear area when selecting category
-                    }}
+                    onCategoryChange={handleCategoryChange}
                   />
                 </div>
                 
@@ -93,10 +106,7 @@ export default function Home() {
                   <h3 className="text-sm font-medium mb-2 text-muted-foreground">Filter by Area</h3>
                   <AreaFilters
                     selectedArea={selectedArea}
-                    onAreaChange={(area) => {
-                      setSelectedArea(area)
-                      setSelectedCategory(null) // Clear category when selecting area
-                    }}
+                    onAreaChange={handleAreaChange}
                   />
                 </div>
               </div>
@@ -148,7 +158,7 @@ export default function Home() {
             isOpen={!!selectedRecipe}
             onClose={handleCloseModal}
             isBookmarked={isBookmarked(selectedRecipe.idMeal)}
-            onToggleBookmark={() => toggleBookmark(selectedRecipe.idMeal)}
+            onToggleBookmark={handleToggleBookmarkModal}
           />
         )}
       </div>

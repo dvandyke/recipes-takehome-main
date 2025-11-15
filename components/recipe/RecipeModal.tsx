@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { X, Heart, ExternalLink } from 'lucide-react'
@@ -39,7 +40,10 @@ export function RecipeModal({ recipe, isOpen, onClose, onToggleBookmark, isBookm
   
   if (!recipe) return null
 
-  const ingredients = displayRecipe ? parseIngredients(displayRecipe) : []
+  const ingredients = useMemo(
+    () => (displayRecipe ? parseIngredients(displayRecipe) : []),
+    [displayRecipe]
+  )
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>

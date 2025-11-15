@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Heart, Clock, Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -24,11 +24,12 @@ export function ViewSwitcher({
   useEffect(() => {
     setMounted(true)
   }, [])
-  const views = [
+  
+  const views = useMemo(() => [
     { id: 'discover' as const, label: 'Discover', icon: Search },
     { id: 'favorites' as const, label: 'Favorites', icon: Heart, count: mounted ? favoritesCount : 0 },
     { id: 'history' as const, label: 'History', icon: Clock, count: mounted ? historyCount : 0 },
-  ]
+  ], [mounted, favoritesCount, historyCount])
 
   return (
     <div className="flex gap-2 border-b pb-4">

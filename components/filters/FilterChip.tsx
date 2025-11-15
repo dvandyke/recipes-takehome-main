@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -10,7 +11,7 @@ interface FilterChipProps {
   onClick: () => void
 }
 
-export function FilterChip({ label, active, onClick }: FilterChipProps) {
+export const FilterChip = memo(function FilterChip({ label, active, onClick }: FilterChipProps) {
   return (
     <Badge
       variant={active ? 'default' : 'outline'}
@@ -21,4 +22,4 @@ export function FilterChip({ label, active, onClick }: FilterChipProps) {
       {active && <X className="ml-1 h-3 w-3" />}
     </Badge>
   )
-}
+})
